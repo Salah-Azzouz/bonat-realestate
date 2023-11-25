@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  bonat-realestate-pg-db:
+    image: postgres:12-alpine
+    container_name: bonat-realestate-pg-db
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - bonat-realestate-network
+    restart: always
+
+volumes:
+  pgdata:
+
+networks:
+  bonat-realestate-network:
+    driver: bridge
