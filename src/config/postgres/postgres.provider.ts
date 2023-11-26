@@ -1,5 +1,5 @@
 export const PostgresFactoryConfig: any = () => {
-  const entitiesPath = __dirname + './../../../common/schema/*.entity{.ts,.js}';
+  const entitiesPath = __dirname + './../../schema/*.entity{.ts,.js}';
   return {
     database: process.env.DB_NAME,
     entities: [entitiesPath],
